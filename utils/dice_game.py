@@ -16,3 +16,4 @@ class DiceGame:
 
 	def menu(self):
 		pass
+		menu
