@@ -27,7 +27,7 @@ class UserManager:
 			print("Password must be at least 8 characters long.")
 			return
 		else:
-			
+			retur
 		
 	def login():
 		pass
