@@ -14,5 +14,5 @@ class DiceGame:
 	def logout():
 		pass
 
-	def menu():
+	def menu(self):
 		pass

@@ -1,2 +1,5 @@
 class User:
-	pass
+	def _init_(self, username, password)
+		self.username = username
+		self.password = password
+		self.
