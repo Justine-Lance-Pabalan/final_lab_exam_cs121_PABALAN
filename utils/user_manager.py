@@ -54,7 +54,7 @@ class UserManager:
 				return
 			elif username in self.Users:
 				if password == self.Users[username]:
-					DiceGame.menu()
+					DiceGame.menu(self)
 				else:
 					print("Invalid username/password.")
 					self.login()

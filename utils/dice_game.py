@@ -16,7 +16,7 @@ class DiceGame:
 	def logout():
 		pass
 
-	def menu(self):
+	def menu(self, username):
 		print(f"Welcome, {username}!")
 		print("Menu:")
 		print("1. Start game")
