@@ -8,12 +8,12 @@ U_i = User()
 
 def main():
     while True:
-        print(f"Welcome to the Dice Roll Game!")
+        print("\nWelcome to the Dice Roll Game!")
         print("1. Register")
         print("2. Login")
         print("3. Exit")
 
-        choice = input("Enter the number of your choice: ")
+        choice = input("\nEnter the number of your choice: ")
 
         if choice == "1":
             UM_i.register()
@@ -23,6 +23,5 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
-            return
 
 main()
