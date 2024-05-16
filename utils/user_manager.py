@@ -39,22 +39,25 @@ class UserManager:
 					print("Username already exists.")
 				else:
 					if self.validate_password(password):
-						print("Registration successful.")
+						print(self.Users)
 						self.Users[username] = password
 						return
 					
 	def login(self):
-		print("Login")
-		username = input("Enter username, or leave blank to cancel: ")
+		print("\nLogin")
+		username = input(str("Enter username, or leave blank to cancel: "))
 		if username == "":
 			return
 		else:
-			password = input("Enter password, or leave blank to cancel: ")
+			password = input(str("Enter password, or leave blank to cancel: "))
 			if password == "":
 				return
 			elif username in self.Users:
-				if password == self.Users[username][password]:
+				if password == self.Users[username].password:
 					DiceGame.menu()
+					return
 				else:
 					print("Invalid username/password.")
 					self.login()
+			else:
+				print("Username does not exist.")
