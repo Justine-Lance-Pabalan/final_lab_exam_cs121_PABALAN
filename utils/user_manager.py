@@ -45,16 +45,16 @@ class UserManager:
 					
 	def login(self):
 		print("Login")
-		username = print("Enter username, or leave blank to cancel: ")
+		username = input("Enter username, or leave blank to cancel: ")
 		if username == "":
 			return
 		else:
-			password = print("Enter password, or leave blank to cancel: ")
+			password = input("Enter password, or leave blank to cancel: ")
 			if password == "":
 				return
 			elif username in self.Users:
 				if password == self.Users[username][password]:
-					print(f"Welcome, {username}!")
+					DiceGame.menu()
 				else:
 					print("Invalid username/password.")
 					self.login()
