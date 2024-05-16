@@ -41,7 +41,6 @@ class UserManager:
 					if self.validate_password(password):
 						print("Registration successful.")
 						self.Users[username] = password
-						print("Current Users: ",self.Users)
 						return
 					
 	def login(self):
@@ -54,9 +53,8 @@ class UserManager:
 			if password == "":
 				return
 			elif username in self.Users:
-				if password == self.Users[username].password:
+				if password == self.Users[username]:
 					DiceGame.menu()
-					return
 				else:
 					print("Invalid username/password.")
 					self.login()
