@@ -1,6 +1,6 @@
 from .user import User
 
-
+U_i = User
 
 class UserManager:
 	Users = {}
@@ -25,6 +25,7 @@ class UserManager:
 			return True
 
 	def register(self):
+		print("Registration")
 		username = input(str("\nEnter username (at least 4 characters), or leave blank to cancel: "))
 		if username == "":
 			return
@@ -34,12 +35,12 @@ class UserManager:
 				if password == "":
 					return
 				elif username in self.Users:
-						print("Username already exists")
+					print("Username already exists")
 				else:
-						if self.validate_password(username):
-							print("Registration successful")
-							self.Users[username] = password
-							return
-						
-	def login():
-		pass
+					if self.validate_password(password):
+						print("Registration successful")
+						self.Users[username] = password
+						return
+					
+	def login(self):
+			pass
