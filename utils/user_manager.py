@@ -1,7 +1,8 @@
 from .user import User
+from .dice_game import DiceGame
 
 U_i = User
-
+DG_i = DiceGame
 class UserManager:
 	Users = {}
 
@@ -25,8 +26,8 @@ class UserManager:
 			return True
 
 	def register(self):
-		print("Registration")
-		username = input(str("\nEnter username (at least 4 characters), or leave blank to cancel: "))
+		print("\nRegistration")
+		username = input(str("Enter username (at least 4 characters), or leave blank to cancel: "))
 		if username == "":
 			return
 		else:
@@ -35,12 +36,25 @@ class UserManager:
 				if password == "":
 					return
 				elif username in self.Users:
-					print("Username already exists")
+					print("Username already exists.")
 				else:
 					if self.validate_password(password):
-						print("Registration successful")
+						print("Registration successful.")
 						self.Users[username] = password
 						return
 					
 	def login(self):
-			pass
+		print("Login")
+		username = print("Enter username, or leave blank to cancel: ")
+		if username == "":
+			return
+		else:
+			password = print("Enter password, or leave blank to cancel: ")
+			if password == "":
+				return
+			elif username in self.Users:
+				if password == self.Users[username][password]:
+					print(f"Welcome, {username}!")
+				else:
+					print("Invalid username/password.")
+					self.login()

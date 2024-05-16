@@ -1,3 +1,4 @@
+
 class DiceGame:
 	def load_scores():
 		pass
@@ -15,5 +16,4 @@ class DiceGame:
 		pass
 
 	def menu(self):
-		pass
-		menu
+		print(f"Welcome, {username}!")
