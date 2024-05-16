@@ -1,5 +1,5 @@
 class User:
-	def _init_(self, username, password, score = 0, stages_won = 0)
+	def _init_(self, username, password, score = 0, stages_won = 0):
 		self.username = username
 		self.password = password
 		self.score = score
