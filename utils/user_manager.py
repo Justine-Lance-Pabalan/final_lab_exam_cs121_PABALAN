@@ -39,8 +39,9 @@ class UserManager:
 					print("Username already exists.")
 				else:
 					if self.validate_password(password):
-						print(self.Users)
+						print("Registration successful.")
 						self.Users[username] = password
+						print("Current Users: ",self.Users)
 						return
 					
 	def login(self):
