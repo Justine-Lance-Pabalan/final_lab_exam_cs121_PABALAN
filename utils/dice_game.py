@@ -102,7 +102,7 @@ class DiceGame:
 			choice = input("Enter the number of your choice: ")
 
 			if choice == "1":
-				self.play_game()
+				self.play_game(username, 0, 0)
 			elif choice == "2":
 				self.show_top_scores()
 			elif choice == "3":
