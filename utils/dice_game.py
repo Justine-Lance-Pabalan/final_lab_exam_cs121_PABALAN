@@ -14,7 +14,7 @@ class DiceGame:
 
 	def load_scores(self):
 		try:
-			with open("scores.txt", "r") as file:
+			with open("rankings.txt", "r") as file:
 				lines = file.readlines()
 				for line in lines:
 					username, points, stages_won, date = line.strip().split(',')
@@ -23,7 +23,7 @@ class DiceGame:
 			print("No score data found.")
 
 	def save_scores(self):
-		with open("scores.txt", "w") as file:
+		with open("rankings.txt", "w") as file:
 			for score in self.user_scores.values():
 				file.write(f"{score.username},{score.points},{score.stages_won},{score.date}\n")
 
@@ -62,15 +62,14 @@ class DiceGame:
 	
 	def play_game(self, username, points, wins):
 		while True:
-			self.points = 0
 			current_wins = self.game(username)
 			wins += current_wins
-
-			self.points += DiceGame.points
-			points += self.points
-			if current_wins > 0:
+			points_round = self.points
+			points += points_round
+			
+			print(f"Total points: {points}, Stages won: {wins}")
+			if wins > 0:
 				try:
-					print(f"Total points: {points}, Stages won: {wins}")
 					choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
 					if choice == '1':
 						continue
@@ -80,12 +79,13 @@ class DiceGame:
 							date = datetime.datetime.now().strftime("%Y/%m/%d")
 							self.user_scores[username] = Score(username, points, wins, date)
 							self.save_scores()
-							break
+						break
 				except ValueError:
 					print("Invalid input. Please Enter 1 for Yes, 0 for No.")
 			else:
 				print("Game over. You didn't win stages.")
 				break
+
 
 	def show_top_scores(self):
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
