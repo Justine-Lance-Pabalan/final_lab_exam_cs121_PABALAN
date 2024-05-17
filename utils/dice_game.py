@@ -67,6 +67,7 @@ class DiceGame:
 			points_round = self.points
 			points += points_round
 			
+			print(f"Total points{points_round}")
 			print(f"Total points: {points}, Stages won: {wins}")
 			if wins > 0:
 				try:
