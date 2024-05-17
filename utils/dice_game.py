@@ -72,7 +72,7 @@ class DiceGame:
 				elif choice == '0':
 					print(f"Game over. Total points: {points}, Stages won: {wins}")
 				if wins > 0:
-					date = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
+					date = datetime.datetime.now().strftime("%Y/%m/%d")
 					self.user_scores[username] = (Score(username, points, wins, date))
 					self.save_scores()
 					break		
