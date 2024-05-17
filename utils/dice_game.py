@@ -57,7 +57,7 @@ class DiceGame:
 			print(f"You lost this stage {username}")
 		return wins
 
-	def play_game(self, username):
+	def play_game(self, username, points):
 		wins = self.game(username)
 		while wins > 0:
 			try:
