@@ -6,12 +6,11 @@ import random
 
 S_i = Score
 
-points = 0
-
 class DiceGame:
 	user_scores = {}
 
 	points = 0
+	wins = 0
 
 	def load_scores(self):
 		try:
@@ -56,37 +55,37 @@ class DiceGame:
 			u_score += 3
 			wins +=1
 			DiceGame.points += u_score
-			return wins
 		else:
 			print(f"You lost this stage {username}")
 			return
-
+		return wins
+	
 	def play_game(self, username, points, wins):
 		while True:
-			self.points = 0 
-			wins = 0  
-			wins += self.game(username) 
-			points += self.points  
-			if wins > 0:
+			self.points = 0
+			current_wins = self.game(username)
+			wins += current_wins
+
+			self.points += DiceGame.points
+			points += self.points
+			if current_wins > 0:
 				try:
 					print(f"Total points: {points}, Stages won: {wins}")
 					choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
 					if choice == '1':
-						continue  # Continue playing
+						continue
 					elif choice == '0':
 						print(f"Game over. Total points: {points}, Stages won: {wins}")
 						if wins > 0:
 							date = datetime.datetime.now().strftime("%Y/%m/%d")
 							self.user_scores[username] = Score(username, points, wins, date)
 							self.save_scores()
-							break  # Exit the loop and end the game
+							break
 				except ValueError:
 					print("Invalid input. Please Enter 1 for Yes, 0 for No.")
 			else:
 				print("Game over. You didn't win stages.")
 				break
-
-		
 
 	def show_top_scores(self):
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
