@@ -67,16 +67,15 @@ class DiceGame:
 				print(f"Total points: {points}, Stages won: {wins}")
 				choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
 				if choice == '1':
-					wins = self.game(username)
-					stages_won += 1
-					u_score += 3
+					u_score, u_wins = self.game(username)
 					points += u_score
+					wins += u_wins
 					continue
 				elif choice == '0':
-					print(f"Game over. Total points: {points}, Stages won: {stages_won}")
-				if stages_won > 0:
+					print(f"Game over. Total points: {points}, Stages won: {wins}")
+				if wins > 0:
 					date = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
-					self.user_scores[username] = (Score(username, points, stages_won, date))
+					self.user_scores[username] = (Score(username, points, wins, date))
 					self.save_scores()
 					break		
 			except ValueError:
