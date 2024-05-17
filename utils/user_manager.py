@@ -68,6 +68,6 @@ class UserManager:
 					return
 				else:
 					print("Invalid username/password.")
-					self.login()
+					self.login(username)
 			else:
 				print("Username does not exist.")
