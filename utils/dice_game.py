@@ -9,6 +9,8 @@ S_i = Score
 class DiceGame:
 	user_scores = {}
 
+	points = 0
+
 	def load_scores(self):
 		try:
 			with open("scores.txt", "r") as file:
