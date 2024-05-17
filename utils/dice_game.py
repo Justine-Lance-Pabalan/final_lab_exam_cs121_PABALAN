@@ -58,6 +58,7 @@ class DiceGame:
 		else:
 			print(f"You lost this stage {username}")
 			wins += 0
+			u_score += 0
 		return wins
 	
 	def play_game(self, username, points, wins):
