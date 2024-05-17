@@ -11,23 +11,10 @@ class DiceGame:
 	user_scores = {}
 
 	def load_scores(self):
-		if not os.path.exists("scores.txt")
-			with open('scores.txt', 'w') as f:
-				f.write("")
-		else:
-			with open('scores.txt', 'r') as f:
-				for line in f:
-					values = line.strip().split(',')
-					username = values[0]
-					points = values[1]
-					wins = values[2]
-					gameID = values[3]
-					self.user_scores[username] = Score(points, wins, gameID)
+		pass
 
 	def save_scores(self):
-		with open('scores.txt', 'w') as f:
-			for score in self.user_scores.values():
-				f.write(f"{score.username}, {score.points}, {score.stages_won}, {score.date}\n")
+		pass
 	
 	def roll(self):
 		return random.randint(1,6)
