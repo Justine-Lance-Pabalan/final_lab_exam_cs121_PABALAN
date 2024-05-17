@@ -45,9 +45,11 @@ class DiceGame:
 			if u_roll > c_roll:
 				u_score += 1
 				print(f"You win this round! {username}.")
+				return u_score
 			elif c_roll > u_roll:
 				c_score += 1
 				print("Computer wins this round!")
+				return c_score
 			else: 
 				print("It's a tie!")
 
