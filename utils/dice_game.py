@@ -68,7 +68,6 @@ class DiceGame:
 				if choice == '1':
 					wins += self.game(username)
 					points += DiceGame.points
-					self.play_game(self, username, points, wins)
 					continue
 				elif choice == '0':
 					print(f"Game over. Total points: {points}, Stages won: {wins}")
