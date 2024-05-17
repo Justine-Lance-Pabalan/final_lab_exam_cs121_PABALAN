@@ -87,7 +87,7 @@ class DiceGame:
 			elif wins == 0:
 				print("Game over. You didn't win stages.")
 				break
-
+			self_points = 0
 
 	def show_top_scores(self):
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
