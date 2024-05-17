@@ -59,7 +59,7 @@ class DiceGame:
 		points = 0
 		stages_won = 0
 		while True:
-			self.game()
+			self.game(username)
 			if wins >0:
 				u_score += 3
 				stages_won += 1

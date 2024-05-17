@@ -3,7 +3,7 @@ from utils.user_manager import UserManager
 from utils.user import User
 from utils.score import Score
 
-UM_i = UserManager
+UM_i = UserManager()
 
 def main():
     while True:
