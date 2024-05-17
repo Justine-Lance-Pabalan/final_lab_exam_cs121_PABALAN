@@ -50,6 +50,7 @@ class UserManager:
 					if self.validate_password(password):
 						print("Registration successful.")
 						self.Users[username] = User(username, password)
+						self.save_users
 						return
 					
 	def login(self):
