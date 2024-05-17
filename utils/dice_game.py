@@ -71,6 +71,8 @@ class DiceGame:
 			
 			print(f"Total points: {points}, Stages won: {wins}")
 			if wins > 0:
+				self_points = 0
+				DiceGame.points = 0
 				try:
 					choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
 					if choice == '1':
@@ -87,7 +89,6 @@ class DiceGame:
 			elif wins == 0:
 				print("Game over. You didn't win stages.")
 				break
-			self_points = 0
 
 	def show_top_scores(self):
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
