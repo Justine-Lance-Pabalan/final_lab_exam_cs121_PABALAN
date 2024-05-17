@@ -1,7 +1,6 @@
-from .user import User
 from .dice_game import DiceGame
+from .user import User
 
-U_i = User
 DG_i = DiceGame
 
 class UserManager:
@@ -17,6 +16,8 @@ class UserManager:
 		if len(username) <4:
 			print("Username must be at least 4 characters long.")
 			self.register()
+		elif username in self.Users:
+			print("Username already exists.")
 		else:
 			return True
 	def validate_password(self, password):
@@ -36,8 +37,6 @@ class UserManager:
 				password = input(str("Enter password (at least 8 characters), or leave blank to cancel: "))
 				if password == "":
 					return
-				elif username in self.Users:
-					print("Username already exists.")
 				else:
 					if self.validate_password(password):
 						print("Registration successful.")
