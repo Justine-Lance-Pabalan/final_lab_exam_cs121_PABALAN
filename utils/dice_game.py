@@ -67,9 +67,6 @@ class DiceGame:
 				print(f"Total points: {points}, Stages won: {wins}")
 				choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
 				if choice == '1':
-					u_score, u_wins = self.game(username)
-					points += u_score
-					wins += u_wins
 					continue
 				elif choice == '0':
 					print(f"Game over. Total points: {points}, Stages won: {wins}")
