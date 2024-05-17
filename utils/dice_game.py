@@ -64,9 +64,9 @@ class DiceGame:
 		while True:
 			current_wins = self.game(username)
 			wins += current_wins
-			points_round = self.points
+			points_round = 0
+			points_round += self.points
 			points += points_round
-			self.points = 0
 			
 			print(f"Total points: {points}, Stages won: {wins}")
 			if wins > 0:
@@ -83,7 +83,7 @@ class DiceGame:
 						break
 				except ValueError:
 					print("Invalid input. Please Enter 1 for Yes, 0 for No.")
-			else:
+			elif wins == 0:
 				print("Game over. You didn't win stages.")
 				break
 
