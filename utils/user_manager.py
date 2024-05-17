@@ -1,7 +1,7 @@
 from .dice_game import DiceGame
 from .user import User
 
-DG_i = DiceGame
+DG_i = DiceGame()
 
 class UserManager:
 	Users = {}
@@ -64,10 +64,10 @@ class UserManager:
 				return
 			elif username in self.Users:
 				if password == self.Users[username].password:
-					DiceGame.menu(self, username)
+					DG_i.menu(username)
 					return
 				else:
 					print("Invalid username/password.")
-					self.login(username)
+					self.login()
 			else:
 				print("Username does not exist.")
