@@ -31,8 +31,8 @@ class DiceGame:
 		u_score = 0
 		c_score = 0
 		wins = 0
-		print(f"Starting the game as {username}...")
-		while u_score <2 or c_score <2:
+		print(f"\nStarting the game as {username}...")
+		while u_score <2 and c_score <2:
 			u_roll = self.roll()
 			c_roll = self.roll()
 			print(f"{username} rolled: ", u_roll)
