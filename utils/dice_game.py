@@ -55,10 +55,10 @@ class DiceGame:
 			u_score += 3
 			wins +=1
 			DiceGame.points += u_score
+			return wins
 		else:
 			print(f"You lost this stage {username}")
-			return
-		return wins
+			return 0
 	
 	def play_game(self, username, points, wins):
 		while True:
