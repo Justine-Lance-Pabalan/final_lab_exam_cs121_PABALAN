@@ -6,10 +6,10 @@ import random
 
 S_i = Score
 
+points = 0
+
 class DiceGame:
 	user_scores = {}
-
-	points = 0
 
 	def load_scores(self):
 		try:
@@ -52,16 +52,16 @@ class DiceGame:
 
 		if u_score > c_score:
 			print(f"You won this stage {username}!")
-			u_score +3
+			u_score += 3
 			wins +=1
-			points = u_score
 		else:
 			print(f"You lost this stage {username}")
-		return wins
+		return u_score, wins
 
-	def play_game(self, username):
-		points = self.game(points)
-		wins = self.game(username)
+	def play_game(self, username, points, stages_won):
+		u_score, u_wins = self.game(username)
+		points += u_score
+		wins +=  u_wins
 		while wins > 0:
 			try:
 				print(f"Total points: {points}, Stages won: {wins}")
@@ -102,7 +102,7 @@ class DiceGame:
 			choice = input("Enter the number of your choice: ")
 
 			if choice == "1":
-				self.play_game(username)
+				self.play_game(username, 0, 0)
 			elif choice == "2":
 				self.show_top_scores()
 			elif choice == "3":
