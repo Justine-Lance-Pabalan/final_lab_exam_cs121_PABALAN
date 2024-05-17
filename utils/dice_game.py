@@ -46,7 +46,7 @@ class DiceGame:
 				print("Computer wins this round!")
 			else: 
 				print("It's a tie!")
-				
+
 		if u_score > c_score:
 			print(f"You won this stage {username}!")
 			wins +=1
