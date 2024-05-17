@@ -41,6 +41,7 @@ class DiceGame:
 			if u_roll > c_roll:
 				u_score += 1
 				print(f"You win this round! {username}.")
+				return u_score
 			elif c_roll > u_roll:
 				c_score += 1
 				print("Computer wins this round!")
@@ -49,18 +50,18 @@ class DiceGame:
 
 		if u_score > c_score:
 			print(f"You won this stage {username}!")
+			u_score +3
 			wins +=1
 		else:
 			print(f"You lost this stage {username}")
 		return wins
 
-	def play_game(self, username):
-		points = 0
-		stages_won = 0
+	def play_game(self, username, u_score):
+		points = u_score
 		wins = self.game(username)
 		while wins > 0:
 			try:
-				print(f"Total points: {points}, Stages won: {stages_won}")
+				print(f"Total points: {points}, Stages won: {wins}")
 				choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
 				if choice == '1':
 					wins = self.game(username)
