@@ -11,6 +11,8 @@ points = 0
 class DiceGame:
 	user_scores = {}
 
+	points = 0
+
 	def load_scores(self):
 		try:
 			with open("scores.txt", "r") as file:
@@ -54,14 +56,14 @@ class DiceGame:
 			print(f"You won this stage {username}!")
 			u_score += 3
 			wins +=1
+			DiceGame.points = u_score
 		else:
 			print(f"You lost this stage {username}")
-		return u_score, wins
+		return wins
 
 	def play_game(self, username, points, wins):
-		u_score, u_wins = self.game(username)
-		points += u_score
-		wins +=  u_wins
+		wins = self.game(username)
+		points = DiceGame.points
 		while wins > 0:
 			try:
 				print(f"Total points: {points}, Stages won: {wins}")
