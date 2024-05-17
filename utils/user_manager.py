@@ -3,6 +3,7 @@ from .dice_game import DiceGame
 
 U_i = User
 DG_i = DiceGame
+
 class UserManager:
 	Users = {}
 
@@ -40,7 +41,7 @@ class UserManager:
 				else:
 					if self.validate_password(password):
 						print("Registration successful.")
-						self.Users[username] = password
+						self.Users[username] = User(username, password)
 						return
 					
 	def login(self):
@@ -53,8 +54,9 @@ class UserManager:
 			if password == "":
 				return
 			elif username in self.Users:
-				if password == self.Users[username]:
+				if password == self.Users[username].password:
 					DiceGame.menu(self, username)
+					return
 				else:
 					print("Invalid username/password.")
 					self.login()
