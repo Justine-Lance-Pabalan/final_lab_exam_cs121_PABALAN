@@ -1,4 +1,3 @@
-from .user import User
 from .score import Score
 
 import datetime
@@ -89,7 +88,7 @@ class DiceGame:
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
 		print("Top Scores:")
 		for i, score in enumerate(sorted_scores[:10], start=1):
-			print(f"{i}. Username: {score.username}, Points: {score.points}, Stages Won: {score.stages_won}, Date: {score.date}")
+			print(f"{i}. {score.username}: Points - {score.points}, Wins - {score.stages_won}, Date - {score.date}")
 
 	def menu(self, username):
 		while True:
