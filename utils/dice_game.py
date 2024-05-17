@@ -33,9 +33,8 @@ class DiceGame:
 		wins = 0
 		print(f"Starting the game as {username}...")
 		while u_score <2 or c_score <2:
-			for rolls in range(1):
-				u_roll = self.roll()
-				c_roll = self.roll()
+			u_roll = self.roll()
+			c_roll = self.roll()
 			print(f"{username} rolled: ", u_roll)
 			print("CPU rolled: ", c_roll)
 
@@ -48,41 +47,45 @@ class DiceGame:
 			else: 
 				print("It's a tie!")
 
+			if u_score > c_score:
+				print(f"You won this stage {username}.")
+				wins += 1
+			else:
+				print(f"You lost the stage {username}.")
+			
 		if u_score > c_score:
-			print(f"You won this stage {username}.")
-			wins += 1
+			print(f"You won this stage {username}!")
+			wins +=1
 		else:
-			print(f"You lost the stage {username}.")
+			print(f"You lost this stage {username}")
+		return wins
 
-	def play_game(self, username, u_score, wins):
+	def play_game(self, username):
 		points = 0
 		stages_won = 0
-		while True:
-			self.game(username)
-			if wins >0:
-				u_score += 3
-				stages_won += 1
-				points += u_score
-			elif wins == 0:
-				print("Game over. You didn't win stages.")
-				break
-			
-			print(f"Total points: {points}, Stages won: {stages_won}")
+		wins = self.game(username)
+		while wins > 0:
 			try:
+				print(f"Total points: {points}, Stages won: {stages_won}")
 				choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
 				if choice == '1':
+					wins = self.game(username)
+					stages_won += 1
+					u_score += 3
+					points += u_score
 					continue
 				elif choice == '0':
-					if wins >0:
-						print(f"Game over. Total points: {points}, Stages won: {stages_won}")
-						date = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
-						self.user_scores[username] = (Score(username, points, stages_won, date))
-						self.save_scores()
-						self.points = 0
-						self.stages_won = 0
-						break
+					print(f"Game over. Total points: {points}, Stages won: {stages_won}")
+				if stages_won > 0:
+					date = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
+					self.user_scores[username] = (Score(username, points, stages_won, date))
+					self.save_scores()
+					break		
 			except ValueError:
 				print("Invalid input. Please Enter 1 for Yes, 0 for No.")
+		else:
+			print("Game over. You didn't win stages.")
+			return
 
 	def show_top_scores(self):
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
