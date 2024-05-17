@@ -61,24 +61,25 @@ class DiceGame:
 		return wins
 
 	def play_game(self, username, points, wins):
-		wins += self.game(username)
-		points += DiceGame.points
-		while wins > 0:
-			try:
-				print(f"Total points: {points}, Stages won: {wins}")
-				choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
-				if choice == '1':
-					continue
-				elif choice == '0':
-					print(f"Game over. Total points: {points}, Stages won: {wins}")
-				if wins > 0:
-					date = datetime.datetime.now().strftime("%Y/%m/%d")
-					self.user_scores[username] = (Score(username, points, wins, date))
-					self.save_scores()
-					break		
-			except ValueError:
-				print("Invalid input. Please Enter 1 for Yes, 0 for No.")
-		else:
+		while True:
+			wins += self.game(username)
+			points += DiceGame.points
+			while wins > 0:
+				try:
+					print(f"Total points: {points}, Stages won: {wins}")
+					choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
+					if choice == '1':
+						continue
+					elif choice == '0':
+						print(f"Game over. Total points: {points}, Stages won: {wins}")
+					if wins > 0:
+						date = datetime.datetime.now().strftime("%Y/%m/%d")
+						self.user_scores[username] = (Score(username, points, wins, date))
+						self.save_scores()
+						break		
+				except ValueError:
+					print("Invalid input. Please Enter 1 for Yes, 0 for No.")
+			else:
 				print("Game over. You didn't win stages.")
 				return
 
