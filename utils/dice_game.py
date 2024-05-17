@@ -11,11 +11,20 @@ class DiceGame:
 	user_scores = {}
 
 	def load_scores(self):
-		pass
+		try:
+			with open("scores.txt", "r") as file:
+				lines = file.readlines()
+				for line in lines:
+					username, points, stages_won, date = line.strip().split(',')
+					self.user_scores[username] = Score(username, int(points), int(stages_won), date)
+		except FileNotFoundError:
+			print("No score data found.")
 
 	def save_scores(self):
-		pass
-	
+		with open("scores.txt", "w") as file:
+			for score in self.user_scores.values():
+				file.write(f"{score.username},{score.points},{score.stages_won},{score.date}\n")
+
 	def roll(self):
 		return random.randint(1,6)
 	
@@ -77,7 +86,10 @@ class DiceGame:
 				print("Invalid input. Please Enter 1 for Yes, 0 for No.")
 
 	def show_top_scores(self):
-		pass
+		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
+		print("Top Scores:")
+		for i, score in enumerate(sorted_scores[:10], start=1):
+			print(f"{i}. Username: {score.username}, Points: {score.points}, Stages Won: {score.stages_won}, Date: {score.date}")
 
 	def menu(self, username):
 		while True:

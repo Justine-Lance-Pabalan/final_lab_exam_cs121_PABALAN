@@ -7,10 +7,19 @@ class UserManager:
 	Users = {}
 
 	def load_users():
-		pass
+		try:
+			with open("users.txt", "r") as file:
+				lines = file.readlines()
+				for line in lines:
+					username, password = line.strip().split(',')
+					UserManager.Users[username] = User(username, password)
+		except FileNotFoundError:
+			print("No user data found.")
 
 	def save_users():
-		pass
+		with open("users.txt", "w") as file:
+			for username, user in UserManager.Users.items():
+				file.write(f"{username},{user.password}\n")
 
 	def validate_username(self, username):
 		if len(username) <4:
