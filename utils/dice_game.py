@@ -68,7 +68,7 @@ class DiceGame:
 					if wins >0:
 						print(f"Game over. Total points: {points}, Stages won: {stages_won}")
 						date = datetime.datetime.now().strftime("%Y%m%d%H%M%S%f")
-						self.user_scores[username] = (Score(username, points, stages_won, date)
+						self.user_scores[username] = (Score(username, points, stages_won, date))
 						self.save_scores()
 						self.points = 0
 						self.stages_won = 0
@@ -77,7 +77,7 @@ class DiceGame:
 				print("Invalid input. Please Enter 1 for Yes, 0 for No.")
 
 	def show_top_scores(self):
-		
+		pass
 
 	def menu(self, username):
 		while True:
