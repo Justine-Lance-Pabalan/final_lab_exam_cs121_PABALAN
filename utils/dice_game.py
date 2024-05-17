@@ -61,10 +61,10 @@ class DiceGame:
 		return wins
 
 	def play_game(self, username, points, wins):
-		while True:
-			wins += self.game(username)
-			points += DiceGame.points
-			while wins > 0:
+		wins += self.game(username)
+		points += DiceGame.points
+		while wins > 0:
+			while True:
 				try:
 					print(f"Total points: {points}, Stages won: {wins}")
 					choice = input("Do you want to continue to the next stage? (1 for Yes, 0 for No): ")
@@ -79,9 +79,9 @@ class DiceGame:
 						break		
 				except ValueError:
 					print("Invalid input. Please Enter 1 for Yes, 0 for No.")
-			else:
-				print("Game over. You didn't win stages.")
-				return
+		else:
+			print("Game over. You didn't win stages.")
+			return
 
 	def show_top_scores(self):
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
