@@ -58,7 +58,7 @@ class DiceGame:
 			print(f"You lost this stage {username}")
 		return u_score, wins
 
-	def play_game(self, username, points, stages_won):
+	def play_game(self, username, points, wins):
 		u_score, u_wins = self.game(username)
 		points += u_score
 		wins +=  u_wins
