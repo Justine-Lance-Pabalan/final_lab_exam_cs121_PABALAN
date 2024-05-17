@@ -78,9 +78,9 @@ class DiceGame:
 					break		
 			except ValueError:
 				print("Invalid input. Please Enter 1 for Yes, 0 for No.")
-		else:
-			print("Game over. You didn't win stages.")
-			return
+			else:
+				print("Game over. You didn't win stages.")
+				return
 
 	def show_top_scores(self):
 		sorted_scores = sorted(self.user_scores.values(), key=lambda x: x.points, reverse=True)
