@@ -1,7 +1,10 @@
+#Function to import and call usermanager.py functions (register,login)
 from utils.user_manager import UserManager
 
+#Function to set object for calling out Usermanager Functions
 UM_i = UserManager()
 
+#Main function to run the program
 def main():
     while True:
         print("\nWelcome to the Dice Roll Game!")
